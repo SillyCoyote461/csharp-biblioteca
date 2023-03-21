@@ -44,7 +44,7 @@ while (true)
                 //register user
 
                 login = library.SetUser(name, surname, email, password, number);
-                 
+                if(login) user = library.Authenticate(email, password);
             }
             break;
 
