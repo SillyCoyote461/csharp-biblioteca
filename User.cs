@@ -33,3 +33,17 @@ public class User
     }
 }
 
+public class Loan : User
+{
+    public int code;
+    public string title;
+    public string start;
+    public string end;
+    public Loan(int code, string title, string start, string end ,string name, string surname, string email, string password, int number) : base(name, surname, email, password, number)
+    {
+        this.code = code;
+        this.title = title;
+        this.start = start;
+        this.end = end;
+    }
+}

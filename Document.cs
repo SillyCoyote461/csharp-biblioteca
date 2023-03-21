@@ -23,7 +23,15 @@ public class Document
         this.year = year;
         this.sector = sector;
         this.shelf = shelf;
-        this.author = author;
+        this.author = author;    
+    }
+    public string Title
+    {
+        get { return title; }
+    }
+    public string Code
+    {
+        get { return code; }
     }
 }
 

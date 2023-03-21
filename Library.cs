@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 public class Library
 {
     public List<User> users = new List<User>();
-    private List<Document> documents = new List<Document>();
+    public List<Document> documents = new List<Document>();
+    public List<Loan> loans = new List<Loan>();
 
     //set user
     public bool SetUser(string name, string surname, string email, string password, int number)
@@ -77,10 +78,30 @@ public class Library
             {
                 Console.WriteLine(item.ToString());
             }
-
+            Console.WriteLine("-------------------------------------");
         }
     }
 
+    //search document
+    public void SearchDocument(string title)
+    {
+        List<string> filtered = new List<string>();
+
+        for(int i = 0; i < documents.Count; i++)
+        {
+            if (documents[i].Title == title)
+            {
+                filtered.Add(documents[i].Code);
+                Console.WriteLine($"------------------------------------- {Environment.NewLine}" +
+                    $"{ documents[i].ToString()}" +
+                    $"{Environment.NewLine}-------------------------------------");
+            }
+        }
+
+        
+    }
+
+    //login method
     public bool Authenticate(string email, string password)
     {
         //check email and password then return

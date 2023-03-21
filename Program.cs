@@ -1,5 +1,6 @@
 ﻿var nl = Environment.NewLine;
 var library = new Library();
+
 bool login = false;
 while (true)
 {
@@ -9,6 +10,7 @@ while (true)
         $"login: allows you to log in{nl}" +
         $"logout: allows you to log out {nl}" +
         $"list: allows you to see the document's list{nl}" +
+        $"search: allows you to search by title {nl}" +
         $"add: allows you to add a new document{nl}{nl}");
     Console.Write("Type a command: ");
     string cmd = Console.ReadLine() ?? "";
@@ -39,6 +41,7 @@ while (true)
                 //register user
 
                 login = library.SetUser(name, surname, email, password, number);
+                 
             }
             break;
 
@@ -154,6 +157,12 @@ while (true)
 
         case "list":
             library.GetDocuments();
+            break;
+
+        case "search":
+            Console.Write("Type the book's title to search: ");
+            string filter = Console.ReadLine() ?? "";
+            library.SearchDocument(filter);
             break;
         //default case
         default:
