@@ -31,15 +31,32 @@ public class User
     {
         get { return email; }
     }
+
+    public string Name
+    {
+        get { return name; }
+    }
+
+    public string Surname
+    {
+        get { return surname; }
+    }
+
+    public int Number
+    {
+        get { return number;}
+    }
+
+
 }
 
 public class Loan : User
 {
-    public int code;
+    public string code;
     public string title;
     public string start;
     public string end;
-    public Loan(int code, string title, string start, string end ,string name, string surname, string email, string password, int number) : base(name, surname, email, password, number)
+    public Loan(string code, string title, string start, string end ,string name, string surname, string email, string password, int number) : base(name, surname, email, password, number)
     {
         this.code = code;
         this.title = title;

@@ -2,6 +2,7 @@
 var library = new Library();
 
 bool login = false;
+User user;
 while (true)
 {
 
@@ -11,6 +12,7 @@ while (true)
         $"logout: allows you to log out {nl}" +
         $"list: allows you to see the document's list{nl}" +
         $"search: allows you to search by title {nl}" +
+        $"loan: allows you to loan a document{nl}" +
         $"add: allows you to add a new document{nl}{nl}");
     Console.Write("Type a command: ");
     string cmd = Console.ReadLine() ?? "";
@@ -58,7 +60,11 @@ while (true)
                 string email = Console.ReadLine() ?? "";
                 Console.Write($"password: ");
                 string password = Console.ReadLine() ?? "";
-                login = library.Authenticate(email, password);
+                user = library.Authenticate(email, password);
+
+                if (user != null) login = true; 
+                else login = false;
+              
                 if (login)
                 {
                     Console.WriteLine($"-------------------------------------{nl}" +
@@ -78,6 +84,7 @@ while (true)
             if (login)
             {
                 login = false;
+                user = null;
                 Console.WriteLine($"-------------------------------------{nl}" +
                 $"you have successfully logged out {nl}" +
                 $"-------------------------------------");
@@ -152,8 +159,19 @@ while (true)
                 Console.WriteLine("You must me logged in to add a new document in the library");
             }
             break;
-   
-        
+
+        case "loan":
+            if (login)
+            {
+                Console.Write("Digit document code: ");
+                var code = Console.ReadLine();
+                library.LoanDocument(code, user);
+            }
+            else
+            {
+                Console.WriteLine("You must be logged in");
+            }
+            break;
 
         case "list":
             library.GetDocuments();
@@ -164,6 +182,7 @@ while (true)
             string filter = Console.ReadLine() ?? "";
             library.SearchDocument(filter);
             break;
+
         //default case
         default:
             Console.WriteLine($"{nl}there is no '{cmd}' command avaiable{nl}");

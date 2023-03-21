@@ -85,34 +85,74 @@ public class Library
     //search document
     public void SearchDocument(string title)
     {
-        List<string> filtered = new List<string>();
 
         for(int i = 0; i < documents.Count; i++)
         {
             if (documents[i].Title == title)
             {
-                filtered.Add(documents[i].Code);
                 Console.WriteLine($"------------------------------------- {Environment.NewLine}" +
                     $"{ documents[i].ToString()}" +
                     $"{Environment.NewLine}-------------------------------------");
             }
         }
+    }
 
+    public void LoanDocument(string code, User user)
+    {
+        Document filtered = null;
+        for (int i = 0; i < documents.Count; i++)
+        {
+            if (documents[i].Code == code)
+            {
+                filtered = documents[i];
+                Console.Write("Insert starting loan date");
+                string start = Console.ReadLine() ?? "";
+                Console.WriteLine("Insert ending loan date");
+                string end = Console.ReadLine() ?? "";
+                LoanAfter(user, filtered, start, end);
+            }
+        }
+        if (filtered is null) Console.WriteLine("Document not found");
+    }
+
+    public void LoanAfter(User user, Document doc, string start, string end)
+    {
+        loans.Add(new Loan(doc.Code, doc.Title, start, end, user.Name, user.Surname, user.Email, user.Password, user.Number));
+    }
+
+    public void CheckLoans(User user)
+    {
         
+        if (documents.Count is 0)
+        {
+            Console.WriteLine($"You have no loans{Environment.NewLine}-------------------------------------");
+        }
+        else
+        {
+            Console.WriteLine("Your loans: ");
+            foreach (Loan item in loans)
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine("-------------------------------------");
+        }
+
+
     }
 
     //login method
-    public bool Authenticate(string email, string password)
+    public User Authenticate(string email, string password)
     {
         //check email and password then return
-        bool match = false;
+        
         foreach(User user in users)
         {
             if(user.email == email && user.password == password)
             {
-                match = true;
+                
+                return user;
             } 
         }
-        return match;
+        return null;
     }
 }
