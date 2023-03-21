@@ -13,6 +13,7 @@ while (true)
         $"list: allows you to see the document's list{nl}" +
         $"search: allows you to search by title {nl}" +
         $"loan: allows you to loan a document{nl}" +
+        $"check: list of your loans" +
         $"add: allows you to add a new document{nl}{nl}");
     Console.Write("Type a command: ");
     string cmd = Console.ReadLine() ?? "";
@@ -166,6 +167,17 @@ while (true)
                 Console.Write("Digit document code: ");
                 var code = Console.ReadLine();
                 library.LoanDocument(code, user);
+            }
+            else
+            {
+                Console.WriteLine("You must be logged in");
+            }
+            break;
+
+        case "check":
+            if (login)
+            {
+                library.CheckLoans(user);
             }
             else
             {
