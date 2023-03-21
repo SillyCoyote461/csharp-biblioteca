@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 public class Document
 {
-    private string code;
-    private string title;
-    private int year;
-    private string sector;
-    private string shelf;
-    private string[] author = new string[2];
+    protected string code;
+    protected string title;
+    protected int year;
+    protected string sector;
+    protected string shelf;
+    protected string[] author = new string[2];
 
     //constructor
     public Document(string title, int year, string sector, string shelf, string[] author)
@@ -37,7 +37,18 @@ public class Book : Document
         this.pages = pages;
     }
 
-
+    public override string ToString()
+    {
+        return $"//////////////////{Environment.NewLine}" +
+            $"Title: {title} {Environment.NewLine}" +
+            $"Genre: {sector} {Environment.NewLine}" +
+            $"Release year: {year} {Environment.NewLine}" +
+            $"Pages: {pages} {Environment.NewLine}" +
+            $"Author: {author[0]} {author[1]} {Environment.NewLine}" +
+            $"Shelf: {shelf}{Environment.NewLine}" +
+            $"ID: {code}{Environment.NewLine}" +
+            $"//////////////////";
+    }
 }
 
 public class Dvd : Document

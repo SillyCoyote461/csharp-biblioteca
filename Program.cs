@@ -8,6 +8,7 @@ while (true)
         $"add: allows you to add a new document{nl}{nl}");
     Console.Write("Type a command: ");
     string cmd = Console.ReadLine() ?? "";
+    Console.WriteLine("-------------------------------------");
 
     switch (cmd)
     {
@@ -28,7 +29,7 @@ while (true)
             library.SetUser(name, surname, email, password, number);
             break;
 
-            //new document
+        //new document
         case "add":
             //type selector
             Console.WriteLine("What type of document do you want to add? book|dvd");
@@ -84,6 +85,9 @@ while (true)
 
             break;
 
+        case "list":
+            library.GetDocuments();
+            break;
         //default case
         default:
             Console.WriteLine($"{nl}there is no '{cmd}' command avaiable{nl}");

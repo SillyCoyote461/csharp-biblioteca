@@ -45,9 +45,17 @@ public class Library
     //get document's list
     public void GetDocuments()
     {
-        foreach(Document item in documents)
+        if(documents.Count is 0)
         {
-            Console.WriteLine(item.ToString());
+            Console.WriteLine($"The library is empty{Environment.NewLine}-------------------------------------");
+        }
+        else
+        {
+            foreach (Document item in documents)
+            {
+                Console.WriteLine(item.ToString());
+            }
+
         }
     }
 }
