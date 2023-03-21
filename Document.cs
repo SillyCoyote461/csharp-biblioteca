@@ -33,6 +33,21 @@ public class Document
     {
         get { return code; }
     }
+
+    public string SecondsToMinutes(int seconds)
+    {
+        int minutes = 0;
+        int hours = 0;
+        do
+        {
+            minutes += seconds / 60;
+            hours += minutes / 60;
+            seconds = seconds % 60;
+
+        } while (seconds >= 60);
+        if(hours == 0) return $" {hours}:{minutes}:{seconds} ";
+        else return $" {minutes}:{seconds} ";
+    }
 }
 
 public class Book : Document
@@ -74,7 +89,7 @@ public class Dvd : Document
             $"Title: {title} {Environment.NewLine}" +
             $"Genre: {sector} {Environment.NewLine}" +
             $"Release year: {year} {Environment.NewLine}" +
-            $"seconds: {seconds} {Environment.NewLine}" +
+            $"seconds: {SecondsToMinutes(seconds)} {Environment.NewLine}" +
             $"Author: {author[0]} {author[1]} {Environment.NewLine}" +
             $"Shelf: {shelf}{Environment.NewLine}" +
             $"ID: {code}{Environment.NewLine}" +
@@ -82,3 +97,4 @@ public class Dvd : Document
     }
 
 }
+
