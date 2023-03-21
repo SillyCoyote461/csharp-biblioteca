@@ -63,4 +63,13 @@ public class Loan : User
         this.start = start;
         this.end = end;
     }
+
+    public override string ToString()
+    {
+        return $"--------------------{Environment.NewLine}" +
+            $"Title: {title}{Environment.NewLine}" +
+            $"Document ID: {code}{Environment.NewLine}" +
+            $"Loan in: {start}{Environment.NewLine}" +
+            $"Loan ends in: {end}{Environment.NewLine}";
+    }
 }
