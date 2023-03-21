@@ -11,13 +11,35 @@ public class Library
     private List<Document> documents = new List<Document>();
 
     //set user
-    public void SetUser(string name, string surname, string email, string password, int number)
+    public bool SetUser(string name, string surname, string email, string password, int number)
     {
-        users.Add(new User(name, surname, email, password, number));
+        //check already used email
+        bool match = false;
+        foreach (User user in users)
+        {
+            if (user.email == email && user.password == password)
+            {
+                match = true;
+            }
+        }
+        //if is used:
+        if (match)
+        {
+            Console.WriteLine($"-------------------------------------" +
+                $"{Environment.NewLine}This email is already used{Environment.NewLine}" +
+                $"-------------------------------------");
+            return false;
+        }
+        //if not:
+        else
+        {
+            users.Add(new User(name, surname, email, password, number));
 
-        Console.WriteLine($"-------------------------------------" +
-            $"{Environment.NewLine}you have registered successfully{Environment.NewLine}" +
-            $"-------------------------------------");
+            Console.WriteLine($"-------------------------------------" +
+                $"{Environment.NewLine}you have registered successfully{Environment.NewLine}" +
+                $"-------------------------------------");
+            return true;
+        }
     }
     
     //set books
@@ -57,5 +79,19 @@ public class Library
             }
 
         }
+    }
+
+    public bool Authenticate(string email, string password)
+    {
+        //check email and password then return
+        bool match = false;
+        foreach(User user in users)
+        {
+            if(user.email == email && user.password == password)
+            {
+                match = true;
+            } 
+        }
+        return match;
     }
 }

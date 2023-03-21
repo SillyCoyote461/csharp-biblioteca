@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 public class User
 {
-    private string name;
-    private string surname;
-    private string email;
-    private string password;
-    private int number;
+    public string name;
+    public string surname;
+    public string email;
+    public string password;
+    public int number;
 
     //constructor
     public User(string name, string surname, string email, string password, int number)
@@ -22,6 +22,14 @@ public class User
         this.password = password;
         this.number = number;
     }
+    public string Password
+    {
+        get { return password; }
+    }
 
+    public string Email
+    {
+        get { return email; }
+    }
 }
 
