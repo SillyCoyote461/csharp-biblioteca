@@ -69,7 +69,7 @@ public class Loan : User
         return $"--------------------{Environment.NewLine}" +
             $"Title: {title}{Environment.NewLine}" +
             $"Document ID: {code}{Environment.NewLine}" +
-            $"Loan in: {start}{Environment.NewLine}" +
+            $"Loan made on: {start}{Environment.NewLine}" +
             $"Loan ends in: {end}{Environment.NewLine}";
     }
 }

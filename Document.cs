@@ -67,4 +67,18 @@ public class Dvd : Document
     {
         this.seconds = seconds;
     }
+
+    public override string ToString()
+    {
+        return $"//////////////////{Environment.NewLine}" +
+            $"Title: {title} {Environment.NewLine}" +
+            $"Genre: {sector} {Environment.NewLine}" +
+            $"Release year: {year} {Environment.NewLine}" +
+            $"seconds: {seconds} {Environment.NewLine}" +
+            $"Author: {author[0]} {author[1]} {Environment.NewLine}" +
+            $"Shelf: {shelf}{Environment.NewLine}" +
+            $"ID: {code}{Environment.NewLine}" +
+            $"//////////////////";
+    }
+
 }
