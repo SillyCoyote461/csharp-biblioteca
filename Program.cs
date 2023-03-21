@@ -4,7 +4,7 @@ while (true)
 {
     Console.WriteLine($"Type the command you want to use:{nl}{nl}" +
         $"register: allows you to register to the library{nl}" +
-        $"search: allows you to search a document{nl}" +
+        $"list: allows you to see the document's list{nl}" +
         $"add: allows you to add a new document{nl}{nl}");
     Console.Write("Type a command: ");
     string cmd = Console.ReadLine() ?? "";
