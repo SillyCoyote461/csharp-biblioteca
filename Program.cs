@@ -2,7 +2,7 @@
 var library = new Library();
 
 bool login = false;
-User user;
+User user = null;
 while (true)
 {
 
@@ -13,7 +13,7 @@ while (true)
         $"list: allows you to see the document's list{nl}" +
         $"search: allows you to search by title {nl}" +
         $"loan: allows you to loan a document{nl}" +
-        $"check: list of your loans" +
+        $"check: list of your loans{nl}" +
         $"add: allows you to add a new document{nl}{nl}");
     Console.Write("Type a command: ");
     string cmd = Console.ReadLine() ?? "";
